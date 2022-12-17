@@ -1,0 +1,20 @@
+/* Début Header */
+#header {
+    justify-content: space-between;
+    background-color: #000022;
+    padding-bottom: 2%;
+}
+nav {
+    display: flex;
+}
+#title_site{
+    color: #FC814A;
+    margin-left: 45%;
+}
+#title_game{
+    color: #FC814A;
+}
+#games{
+    justify-content: space-around;
+}
+/* Fin Header */
