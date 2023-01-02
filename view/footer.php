@@ -11,10 +11,10 @@
                         </p>
                         <!--Début de la partie lien réseaux-->
                         <div id="reseaux_sociaux">
-                            <a href="https://github.com/Florianrcht/Hexo_Trackers" target="_blank"><img class="bouton_reseaux_sociaux" src="/Hexo_Trackers/assets/imgs/icone-github-orange.png" width="30"></a>
-                            <a href="mailto:hexotrackers@gmail.com" target="_blank"><img class="bouton_reseaux_sociaux" src="/Hexo_Trackers/assets/imgs/icone-gmail-orange.png" width="35"></a>
-                            <a href="https://twitter.com/HexoTrackers" target="_blank"><img class="bouton_reseaux_sociaux" src="/Hexo_Trackers/assets/imgs/icone-twitter-orange.png" width="30"></a>
-                            <a href="https://trello.com/b/A7BsQmJA/hexo-tracking" target="_blank"><img class="bouton_reseaux_sociaux"src="/Hexo_Trackers/assets/imgs/icone-trello-orange.png" width="34"></a>
+                            <a href="https://github.com/Florianrcht/Hexo_Trackers" target="_blank"><img class="bouton_reseaux_sociaux" src="../../assets/imgs/icone-github-orange.png" width="30"></a>
+                            <a href="mailto:hexotrackers@gmail.com" target="_blank"><img class="bouton_reseaux_sociaux" src="../../assets/imgs/icone-gmail-orange.png" width="35"></a>
+                            <a href="https://twitter.com/HexoTrackers" target="_blank"><img class="bouton_reseaux_sociaux" src="../../assets/imgs/icone-twitter-orange.png" width="30"></a>
+                            <a href="https://trello.com/b/A7BsQmJA/hexo-tracking" target="_blank"><img class="bouton_reseaux_sociaux"src="../../assets/imgs/icone-trello-orange.png" width="34"></a>
                         </div>
                         <!--Fin de la partie liens réseaux-->
                 </div>
