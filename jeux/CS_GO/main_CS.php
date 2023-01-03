@@ -1,18 +1,33 @@
 <?php
     include '../../includes/function.php';
 
+    /*----- MASQUE LES ERREURS -----*/ 
+    error_reporting('0');
+    /*----- MASQUE LES ERREURS -----*/ 
 
 
 /*-------------------------------------------- DEBUT DES FONCTIONS API --------------------------------------------------------------------*/
 
 /*---------------- DEBUT DES SETTINGS --------------*/ 
     $platform = 'steam';
-    $CsgoNickname = 'iriaisa';
+
+    if ($_POST['input_search_nickname'] === NULL){
+        $CsgoNickname = '76561198806956853';
+    } else {
+        $CsgoNickname = $_POST['input_search_nickname'];
+    }
+
     $segments = 'map';
 /*---------------- FIN DES SETTINGS ----------------*/ 
 
 /*---------------- DEBUT DES VARIABLES -------------*/ 
     $playerStats = getPlayerStats($platform, $CsgoNickname);
+
+    $PlayerAvatar = $playerStats['data']['platformInfo']['avatarUrl'];
+
+    $playerName = $playerStats['data']['platformInfo']['platformUserHandle'];
+
+    $CsgoNickname = $_POST['input_search_nickname'];
 
     $NmbKill = $playerStats['data']['segments']['0']['stats']['kills']['displayValue'];
 
@@ -53,7 +68,13 @@
     $Score = $playerStats['data']['segments']['0']['stats']['score']['displayValue'];
 
 
-/*---------------- FIN DES VARIABLES ---------------*/ 
+/*---------------- FIN DES VARIABLES ---------------*/
+
+
+/*---------------- DEBUT DES FAVORIS ---------------*/
+$PseudoFav1 = 'iriaisa';
+/*---------------- FIN DES FAVORIS -----------------*/
+
 
 /*---------------- DEBUT DES VARIABLES SEGMENTEES --*/ 
     $playerSegmentsStats = getPlayerSegmentsStats($platform, $CsgoNickname, $segments);
@@ -64,10 +85,10 @@
 /*---------------- FIN DES VARIABLES SEGMENTEES ----*/ 
 
 /*-------------------------------------------- FIN DES FONCTIONS API ----------------------------------------------------------------------*/
-
 ?>
 
 
+<!-- ------------------------------------------ DEBUT DE LA NAV BARRE ------------------------------------------------------------------- -->
 
 <html>
     <head>
@@ -82,8 +103,13 @@
             <?php include "../../view/header.php"; ?>
         </div>
 
-
+  
         <div id="search_nickname">
+            <div id="favori">
+                <p id="fav_noneclick">Favoris</p>
+                <p id="fav_onclick">Favoris</p>
+            </div>
+            
             <form method="POST" id="search_bar">
             <input type="text" id="input_search_nickname" name="input_search_nickname" placeholder="Steam pseudo/ID/URL">
             <button id="submit_search_nickname" type="submit">Chercher</button>
@@ -119,6 +145,13 @@
                 </div>
             </div>
 
+<!-- ----------------------------------------- DEBUT DE LA NAV BARRE -------------------------------------------------------------------- -->
+<div id="page_favoris">
+    <h3>Vos contacts favoris</h3>
+        <ul>
+            <li ><a href="#" onclick="fillForm()"> <?= $PseudoFav1 ?> </a></li>
+        </ul>
+</div>
 <!-- --------------------------------------DEBUT DE LA PAGE PROFIL----------------------------------------------------------------------- -->
 
         <div id="page_profil">
@@ -126,13 +159,14 @@
             <div id="profil">
 
                 <div id="pseudo">
-                    <h3>Pseudo : <?= $CsgoNickname ?> </h3>
+                    <h3>Pseudo : <?= $playerName ?> </h3>
+                    <h3> <?= $CsgoNickname ?> </h3>
                 </div>
 
                 <br>
 
                 <div id="avatar">
-                    <img id="img_avatar" src="https://www.meme-arsenal.com/memes/d3d1f1ae2a1719f112b4e10335398a43.jpg">
+                    <img id="img_avatar" src=" <?= $PlayerAvatar ?> ">
                     <br>
                     <br>
                 </div>
@@ -157,7 +191,7 @@
                         <p id="playedMatches">Win Rate % : <?= $RatioWin ?> </p> 
                         <br>
                         <p id="bestWeapon">Arme préferée : <?= $bestWeapon ?> </p> 
-                        <p id="bestWeaponKill">Kill : <?= $bestWeaponTotalKill ?> </p> 
+                        <p id="bestWeaponKill">Kill : <?= $bestWeaponTotalKill ?> </p>
                     </div>
                 </div>
             </div>
@@ -175,13 +209,13 @@
             <div id="profil">
 
                 <div id="pseudo">
-                    <h3>Pseudo : <?= $CsgoNickname ?> </h3>
+                    <h3>Pseudo : <?= $playerName ?> </h3>
                 </div>
 
                 <br>
 
                 <div id="avatar">
-                    <img id="img_avatar" src="https://www.meme-arsenal.com/memes/d3d1f1ae2a1719f112b4e10335398a43.jpg">
+                    <img id="img_avatar" src=" <?= $PlayerAvatar ?> ">
                     <br>
                     <br>
                 </div>
@@ -232,14 +266,14 @@
 
             <div id="profil">
 
-                <div id="pseudo">
-                    <h3>Pseudo : <?= $CsgoNickname ?> </h3>
+            <div id="pseudo">
+                    <h3>Pseudo : <?= $playerName ?> </h3>
                 </div>
 
                 <br>
-            <p>WEAPON WORK IN PROGRESS</p>
+
                 <div id="avatar">
-                    <img id="img_avatar" src="https://www.meme-arsenal.com/memes/d3d1f1ae2a1719f112b4e10335398a43.jpg">
+                    <img id="img_avatar" src=" <?= $PlayerAvatar ?> ">
                     <br>
                     <br>
                 </div>
@@ -280,14 +314,14 @@
 
             <div id="profil">
 
-                <div id="pseudo">
-                    <h3>Pseudo : <?= $CsgoNickname ?> </h3>
+            <div id="pseudo">
+                    <h3>Pseudo : <?= $playerName ?> </h3>
                 </div>
 
                 <br>
-            <p>MAP WORK IN PROGRESS</p>
+
                 <div id="avatar">
-                    <img id="img_avatar" src="https://www.meme-arsenal.com/memes/d3d1f1ae2a1719f112b4e10335398a43.jpg">
+                    <img id="img_avatar" src=" <?= $PlayerAvatar ?> ">
                     <br>
                     <br>
                 </div>

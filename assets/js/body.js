@@ -11,15 +11,19 @@ let weaponOnClick = document.querySelector('#weapon_onclick');
 
 let mapNoneClick = document.querySelector('#map_noneclick');
 let mapOnClick = document.querySelector('#map_onclick');
-// FIN DES ONCLICK / NONECLICK
 
+let FavNoneClick = document.querySelector('#fav_noneclick');
+let FavOnClick = document.querySelector('#fav_onclick');
+// FIN DES ONCLICK / NONECLICK
 
 // DEBUT DES PAGES
 let pageProfil = document.querySelector('#page_profil');
 let pageLifetime = document.querySelector('#page_lifetime');
 let pageWeapon = document.querySelector('#page_weapon');
 let pageMap = document.querySelector('#page_map');
+let pageFavoris = document.querySelector('#page_favoris');
 // FIN DES PAGES
+
 
 document.onload = block();
 
@@ -27,12 +31,14 @@ function block() {
     pageLifetime.style.display = 'none';
     pageWeapon.style.display = 'none';
     pageMap.style.display = 'none';
+    pageFavoris.style.display ='none';
 
     profilNoneClick.style.display = 'none';
     lifetimeOnClick.style.display = 'none';
     weaponOnClick.style.display = 'none';
     mapOnClick.style.display = 'none';
 
+    FavOnClick.style.display = 'none';
 } 
 
 document.getElementById("onglet_profil").addEventListener('click', () => {
@@ -57,7 +63,6 @@ if (pageProfil.style.display === 'none') {
 
 } else {
     // Cache le form mail
-    pageProfil.style.display = 'none';
 
 }
 });
@@ -82,7 +87,6 @@ if (pageLifetime.style.display === 'none') {
     mapNoneClick.style.display = 'block'
 } else {
     // Cache le form mail
-    pageLifetime.style.display = 'none';
 
 }
 });
@@ -108,7 +112,6 @@ if (pageWeapon.style.display === 'none') {
 
 } else {
     // Cache le form mail
-    pageWeapon.style.display = 'none';
 
 }
 });
@@ -134,7 +137,33 @@ if (pageMap.style.display === 'none') {
 
 } else {
     // Cache le form mail
-    pageMap.style.display = 'none';
 
 }
 });
+
+// MASQUER/DEMASQUER PAGE FAVORI
+document.getElementById("favori").addEventListener('click', () => {
+    const form = document.getElementById('#page_map');
+
+if (pageFavoris.style.display === 'none') {
+    pageFavoris.style.display = 'block';
+
+    FavOnClick.style.display = 'block'
+    FavNoneClick.style.display = 'none'
+
+} else {
+    pageFavoris.style.display = 'none';
+
+    FavOnClick.style.display = 'none'
+    FavNoneClick.style.display = 'block'
+}
+});
+// MASQUER/DEMASQUER PAGE FAVORI
+
+
+// AUTO REMPLISSAGE VIA FAVORIS
+function fillForm() {
+    document.getElementById('input_search_nickname').value = $;
+    document.getElementById('search_bar').submit();
+}
+// AUTO REMPLISSAGE VIA FAVORIS
